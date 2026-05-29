@@ -1,0 +1,21 @@
+На macOS можно выполнить через Terminal.
+
+Обычно Kindle смонтирован как /Volumes/Kindle.
+
+Сначала проверь точное имя:
+ls /Volumes
+
+Затем:
+KINDLE="/Volumes/Kindle"
+
+rm -rf "$KINDLE/system/.assets"
+touch "$KINDLE/system/.assets"
+
+if [ -d "$KINDLE/system/.assets" ]; then
+    echo "Ошибка: реклама не была удалена"
+else
+    echo "Готово: реклама должна быть отключена"
+fi
+
+Или одной командой:
+rm -rf "/Volumes/Kindle/system/.assets" && touch "/Volumes/Kindle/system/.assets"
